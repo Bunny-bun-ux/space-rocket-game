@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Shooter</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <header class="hud" aria-label="Game HUD">
+        <div class="hud__left">
+          <span class="hud__label">Score</span>
+          <span class="hud__value" id="score">0</span>
+        </div>
+        <div class="hud__right">
+          <span class="hud__label">Health</span>
+          <span class="hud__value" id="health">100</span>
+        </div>
+      </header>
+
+      <main class="stage">
+        <canvas id="game" width="960" height="540" aria-label="Space shooter canvas"></canvas>
+
+        <section class="overlay overlay--hidden" id="overlay" aria-live="polite">
+          <div class="card">
+            <h1 class="card__title" id="overlayTitle">Game Over</h1>
+            <p class="card__subtitle" id="overlaySubtitle">Your score: 0</p>
+            <button class="btn" id="restartBtn" type="button">Restart</button>
+            <p class="card__hint">
+              Move: <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or <kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd>
+              <span class="dot">•</span> Shoot: <kbd>Space</kbd>
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span class="footer__tip">Tip: hold Space to fire (with a short cooldown).</span>
+      </footer>
+    </div>
+
+    <script src="./game.js"></script>
+  </body>
+</html>
