@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Shooter</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <header class="hud" aria-label="Game HUD">
+        <div class="hud__left">
+          <span class="hud__label">Score</span>
+          <span class="hud__value" id="score">0</span>
+        </div>
+        <div class="hud__right">
+          <span class="hud__label">Health</span>
+          <span class="hud__value" id="health">100</span>
+        </div>
+      </header>
+
+      <main class="stage">
+        <canvas id="game" width="960" height="540" aria-label="Space shooter canvas"></canvas>
+
+        <section class="overlay" id="overlay" aria-live="polite">
+          <div class="card" id="overlayCard" data-scene="start">
+            <h1 class="card__title" id="overlayTitle">Space Shooter</h1>
+            <p class="card__subtitle" id="overlaySubtitle">Welcome! Ready to launch?</p>
+
+            <div class="howto" id="howtoBox" aria-label="How to play">
+              <div class="howto__goal-hero" aria-label="Goal: destroy meteors and survive">
+                <p class="howto__goal-kicker">GOAL</p>
+                <p class="howto__goal-title">Destroy meteors</p>
+                <p class="howto__goal-sub">Survive as long as you can</p>
+              </div>
+
+              <p class="howto__sectionLabel">How to play</p>
+
+              <div class="howto__grid howto__grid--controls" aria-label="Controls">
+                <div class="howto__cell howto__cell--move">
+                  <span class="howto__cellTitle">Move</span>
+                  <div class="howto__keyRow" aria-hidden="true">
+                    <div class="keypad" role="img" aria-label="W A S D">
+                      <div class="keypad__row">
+                        <kbd class="key key--sm">W</kbd>
+                      </div>
+                      <div class="keypad__row">
+                        <kbd class="key key--sm">A</kbd>
+                        <kbd class="key key--sm">S</kbd>
+                        <kbd class="key key--sm">D</kbd>
+                      </div>
+                    </div>
+                    <span class="howto__or">or</span>
+                    <div class="arrows">
+                      <div class="arrows__row">
+                        <kbd class="key key--arrow" title="up">▲</kbd>
+                      </div>
+                      <div class="arrows__row">
+                        <kbd class="key key--arrow" title="left">◀</kbd>
+                        <kbd class="key key--arrow" title="down">▼</kbd>
+                        <kbd class="key key--arrow" title="right">▶</kbd>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="howto__micro">Use WASD or Arrow Keys</p>
+                </div>
+
+                <div class="howto__cell howto__cell--shoot">
+                  <span class="howto__cellTitle">Shoot</span>
+                  <kbd class="key key--space" title="spacebar">Space</kbd>
+                  <p class="howto__micro">Hold to shoot</p>
+                </div>
+
+                <div class="howto__cell howto__cell--pause">
+                  <span class="howto__cellTitle">Pause</span>
+                  <kbd class="key" title="escape">Esc</kbd>
+                  <p class="howto__micro">Press to pause</p>
+                </div>
+
+                <div class="howto__cell howto__cell--empty" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <div class="card__menus" id="cardMenus">
+              <div class="card__menu" id="menuStart" data-menu="start">
+                <button class="btn" id="playBtn" type="button">Play</button>
+              </div>
+              <div class="card__menu" id="menuPause" data-menu="pause" hidden>
+                <button class="btn" id="resumeBtn" type="button">Resume</button>
+                <button class="btn btn--secondary" id="quitFromPauseBtn" type="button">Quit</button>
+              </div>
+              <div class="card__menu" id="menuGameover" data-menu="over" hidden>
+                <button class="btn" id="playAgainBtn" type="button">Play Again</button>
+                <button class="btn btn--secondary" id="quitFromOverBtn" type="button">Quit</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="confirm-layer" id="quitConfirmLayer" hidden role="presentation">
+            <div
+              class="confirm"
+              id="quitConfirm"
+              role="alertdialog"
+              aria-modal="true"
+              aria-labelledby="quitConfirmTitle"
+            >
+              <p class="confirm__text" id="quitConfirmTitle">Quit this run?</p>
+              <div class="confirm__actions">
+                <button class="btn btn--secondary" id="cancelQuitBtn" type="button">Cancel</button>
+                <button class="btn" id="confirmQuitBtn" type="button">Quit</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span class="footer__tip">Press Esc to pause • Hold Space to shoot</span>
+      </footer>
+    </div>
+
+    <script src="./game.js"></script>
+  </body>
+</html>
